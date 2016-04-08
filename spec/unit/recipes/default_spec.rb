@@ -7,9 +7,9 @@
 require 'spec_helper'
 
 describe 'jenkins::default' do
-  context 'When all attributes are default, on an unspecified platform' do
+  context 'When all attributes are default on Ubuntu' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
+      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04', step_into: ['apt_repository'])
       runner.converge(described_recipe)
     end
 
